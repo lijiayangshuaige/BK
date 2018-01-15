@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Classification";
+    Layout = "~/Views/Problems_LayoutPage.cshtml";
+}
+<script>
+    $(function () {
+        str(3);
+    })
+</script>
+
+@{
+    List<BKMvcApplication.Models.Problems_Type> list = ViewBag.list as List<BKMvcApplication.Models.Problems_Type>;
+    foreach (var item in list)
+    {
+    <div style="width:100px;height:50px;float:left;margin-top:25px;margin-left:50px">
+        <a href="#" style="font-size:20px">@item.Problems_Type_Name</a>
+    </div>
+    }
+    
+    
+}

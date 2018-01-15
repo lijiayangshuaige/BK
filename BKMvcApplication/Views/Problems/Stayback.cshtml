@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "带回答";
+    Layout = "~/Views/Problems_LayoutPage.cshtml";
+    
+}
+<script src="~/Js/Problems/jqPaginator.js"></script>
+<script src="~/Js/Problems/layer/layer.js"></script>
+<link href="~/Css/Problems/page.css" rel="stylesheet" />
+<script>
+    $(function () {
+        str(1);
+    })
+</script>
+<style>
+    .myTable {
+        width: 600px;
+    }
+
+        .myTable th {
+            background-color: #abcdff;
+            color: white;
+        }
+
+        .myTable td {
+            border: solid skyblue;
+            border-width: 0px 1px 1px 0px;
+            text-align: center;
+        }
+</style>
+<script>
+    var getDate = function (_Page, _Rows) {
+
+        $.post("/Problems/king", {
+            Page: _Page,
+            Rows: _Rows,
+        }, function (Dm) {
+            /* 将JSON字符串转化为JSON数组 */
+            //console.log(result);
+            //alert(result.length)
+            var Num = Dm.Num;
+            createBar(Num, _Page);
+            var content = "";
+            for (var i = 0; i < Dm.DTO_Problems.length; i++) {
+                if (Dm.DTO_Problems[i].Problems_IsSolve == 1) {
+                    content += "<div class=\"questions_detail_con\"><div class=\"q_time\"><span>" + Dm.DTO_Problems[i].Problems_Time + "来自" + "</span>";
+                    content += "<a class=\"user_name\" href=\"#\" target=\"_blank\">" + Dm.DTO_Problems[i].Problems_Name + "</a>";
+                    content += "<b>悬赏<a href=\"javascript:;\" style=\"color:orange\" title=\"个人悬赏\">" + Dm.DTO_Problems[i].Problems_Money + "C" + "</a></b>";
+                    content += "</div><dl><dt><a href=\"/Answer/Index?BlogsId=" + Dm.DTO_Problems[i].Problems_Id + " target=\"_blank\">" + Dm.DTO_Problems[i].Problems_Title + "</a></dt><dd>" + Dm.DTO_Problems[i].Problems_Content + "</dd></dl>";
+                    content += "<div class=\"tags\"><a href=\"#\" target=\"_blank\">" + Dm.DTO_Problems[i].Problems_Type_Problem + "</a></div>";
+                    content += "<a class=\"answer_num \" title=\"暂无满意答案\" target=\"_blank\" href=\"#\"><span>3</span><p>回答</p></a></div>";
+                    content += "<div class=\"share_bar_con\"><div id=\"question_677546_vote\"><em class=\"focusit\">同问0</em></div>";
+                    content += "<div id=\"question_677546\"><span class=\"interval\">|</span><em class=\"collection\">收藏" + Dm.DTO_Problems[i].Problems_CollectCount + "</em></div>";
+                    content += "<span class=\"interval\">|</span><em class=\"browse\">浏览" + Dm.DTO_Problems[i].Problems_SeeCount + "</em></div>";
+                }
+            }
+            $("#content").html(content);
+
+
+        });
+
+    }
+
+    var createBar = function (Num, _Page) {  //_totalPages：总页数   _currentPage：第几页
+
+        $.jqPaginator('#pagination1', {
+            totalPages: Num,
+            visiblePages: 10,
+            currentPage: _Page,
+            first: '<li class="first"><a href="javascript:;">首页</a></li>',
+            prev: '<li class="prev"><a href="javascript:;">上一页</a></li>',
+            next: '<li class="next"><a href="javascript:;">下一页</a></li>',
+            last: '<li class="last"><a href="javascript:;">尾页</a></li>',
+            page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+            onPageChange: function (num, type) {    //num：第几页   type：init：初始化；change：点击后
+                if (type != "init")
+                    
+                    getDate(num, 15);
+            }
+        });
+
+    }
+
+    $(function () {
+        getDate(1, 15);
+
+    });
+</script>
+
+
+<div id="content" style="height: 2450px">
+</div>
+<div style="text-align:center">
+    <ul class="pagination" id="pagination1"></ul>
+</div>

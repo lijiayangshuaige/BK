@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BKModelStoreContainer" CdmEntityContainer="BKEntities">
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="BKModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="Answer_Id" ColumnName="Answer_Id" />
+          <ScalarProperty Name="Problems_Id" ColumnName="Problems_Id" />
+          <ScalarProperty Name="Answer_UserId" ColumnName="Answer_UserId" />
+          <ScalarProperty Name="Answer_Content" ColumnName="Answer_Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Problems">
+      <EntityTypeMapping TypeName="BKModel.Problems">
+        <MappingFragment StoreEntitySet="Problems">
+          <ScalarProperty Name="Problems_Id" ColumnName="Problems_Id" />
+          <ScalarProperty Name="Problems_Type_Id" ColumnName="Problems_Type_Id" />
+          <ScalarProperty Name="Problems_UserId" ColumnName="Problems_UserId" />
+          <ScalarProperty Name="Problems_Time" ColumnName="Problems_Time" />
+          <ScalarProperty Name="Problems_Title" ColumnName="Problems_Title" />
+          <ScalarProperty Name="Problems_Content" ColumnName="Problems_Content" />
+          <ScalarProperty Name="Problems_SeeCount" ColumnName="Problems_SeeCount" />
+          <ScalarProperty Name="Problems_CollectCount" ColumnName="Problems_CollectCount" />
+          <ScalarProperty Name="Problems_IsSolve" ColumnName="Problems_IsSolve" />
+          <ScalarProperty Name="Problems_Money" ColumnName="Problems_Money" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Problems_Type">
+      <EntityTypeMapping TypeName="BKModel.Problems_Type">
+        <MappingFragment StoreEntitySet="Problems_Type">
+          <ScalarProperty Name="Problems_Type_Id" ColumnName="Problems_Type_Id" />
+          <ScalarProperty Name="Problems_Type_Name" ColumnName="Problems_Type_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="BKModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="UserImg" ColumnName="UserImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

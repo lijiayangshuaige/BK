@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BKModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BKModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="BKModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Problems" EntityType="BKModel.Store.Problems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Problems_Type" EntityType="BKModel.Store.Problems_Type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfo" EntityType="BKModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="Answer_Id" />
+    </Key>
+    <Property Name="Answer_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Problems_Id" Type="int" />
+    <Property Name="Answer_UserId" Type="int" />
+    <Property Name="Answer_Content" Type="text" />
+  </EntityType>
+  <EntityType Name="Problems">
+    <Key>
+      <PropertyRef Name="Problems_Id" />
+    </Key>
+    <Property Name="Problems_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Problems_Type_Id" Type="int" />
+    <Property Name="Problems_UserId" Type="int" />
+    <Property Name="Problems_Time" Type="datetime" />
+    <Property Name="Problems_Title" Type="text" />
+    <Property Name="Problems_Content" Type="text" />
+    <Property Name="Problems_SeeCount" Type="int" />
+    <Property Name="Problems_CollectCount" Type="int" />
+    <Property Name="Problems_IsSolve" Type="int" />
+    <Property Name="Problems_Money" Type="int" />
+  </EntityType>
+  <EntityType Name="Problems_Type">
+    <Key>
+      <PropertyRef Name="Problems_Type_Id" />
+    </Key>
+    <Property Name="Problems_Type_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Problems_Type_Name" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserPhone" Type="varchar" MaxLength="11" />
+    <Property Name="UserName" Type="varchar" MaxLength="64" />
+    <Property Name="UserPwd" Type="varchar" MaxLength="64" />
+    <Property Name="UserImg" Type="varchar" MaxLength="64" />
+  </EntityType>
+</Schema>
